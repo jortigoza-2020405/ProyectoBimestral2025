@@ -44,3 +44,10 @@ export const newPasswordValidation = [
     validateErrorWithoutImg
 
 ]
+
+export const categoryValidator = [
+    body('name', 'Name cannot be empty')
+        .notEmpty(),
+    body('description', 'Description cannot be empty')
+        .notEmpty()
+]

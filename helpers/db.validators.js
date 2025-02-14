@@ -1,6 +1,7 @@
 //Validaciones en relación a la BD
 
 import Admin from '../src/admin/admin.model.js'
+import User from '../src/client/client.model.js'
 
 export const existUsername = async(username)=>{
     const alreadyUsername = await Admin.findOne({username})
@@ -21,6 +22,17 @@ export const existEmail = async(email)=>{
 export const findUser = async(id)=>{
     try{
         const userExist = await Admin.findById(id)
+        if(!userExist) return false
+        return userExist
+    }catch(err){
+        console.error(err)
+        return false
+    }
+}
+
+export const findClient = async(id)=>{
+    try{
+        const userExist = await User.findById(id)
         if(!userExist) return false
         return userExist
     }catch(err){

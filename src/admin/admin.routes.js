@@ -1,14 +1,20 @@
 //Rutas de Administrador
 import { Router } from 'express'
 import { 
+    deleteUser,
+    getAllClient,
+    getClient,
     loginAdmin,
     registerAdmin,
-    test
+    test,
+    updateUser
  } from './admin.controller.js'
 import { validateJwt } from '../../middlewares/validate.jwt.js'
-import { loginValidator, registerValidator } from '../../helpers/validators.js'
+import { categoryValidator, loginValidator, registerValidator } from '../../helpers/validators.js'
 import { uploadProfilePicture } from '../../middlewares/multer.upload.js'
 import { deleteFileOnError } from '../../middlewares/delete.file.error.js'
+import { addCategory, deleteCategory, getAllC, getCategory, updateCategory } from '../categories/category.controller.js'
+// import { addProduct } from '../product/product.controller.js'
 const api = Router()
 
 //Rutas privadas
@@ -33,5 +39,61 @@ api.post(
     ], 
     loginAdmin
 )
+
+api.put(
+    '/updateUser/:id',
+    [validateJwt],
+    updateUser
+)
+
+api.delete(
+    '/deleteUser/:id',
+    [validateJwt],
+    deleteUser
+)
+
+api.get('/',
+    [validateJwt],
+    getAllClient
+)
+
+api.get(
+    '/:id',
+    [validateJwt],
+    getClient
+)
+
+// Categorias (Administrador)
+
+api.post(
+    '/addC',
+    [validateJwt],
+    [categoryValidator],
+    addCategory
+)
+
+
+api.get('/C/',
+    [validateJwt],
+    getAllC
+)
+
+api.get('/categorie/:id',
+    [validateJwt],
+    getCategory
+)
+
+api.put(
+    '/updateC/:id',
+    [validateJwt],
+    updateCategory
+)
+
+api.delete(
+    '/deleteC/:id',
+    [validateJwt],
+    deleteCategory
+)
+
 
 export default api

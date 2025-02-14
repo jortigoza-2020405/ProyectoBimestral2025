@@ -62,6 +62,61 @@ export const loginAdmin = async(req, res)=>{
     }
 }
 
+export const getAllClient = async(req, res)=>{
+    try {
+        const {limit = 20, skip = 0} = req.query
+        const users = await userModel.find()
+        if(users.length === 0) return res.status(404).send({message: 'Users not found', success: false})
+        return res.send(
+    {   
+        success: true,
+        message: 'Users Found: ', 
+        users,
+        total: users.length
+    }
+)
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+            success: false,
+            message: 'General error',  success: false,
+            error
+        }
+    )
+    }
+}
+
+export const getClient = async(req, res)=>{
+    try {
+        const { id } = req.params
+        const user = await userModel.findById(id)
+    if(!user) return res.status(404).send(
+        {
+            success: false,
+            message: 'User not found'
+        }
+    )
+    return res.send(
+        {
+            success: true,
+            message: 'User Found',
+            user
+        }
+    )
+} catch (error) {
+        console.error(error)
+            return res.status(500).send({message: 'General error', error,  success: false})
+    }
+}
+
+
+
+
+
+
+
+
 // Editar usuario (Administrador)
 
 export const updateUser = async(req, res)=>{

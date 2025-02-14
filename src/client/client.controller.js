@@ -113,6 +113,11 @@ export const deleteUser = async(req, res)=>{
     try{
         
         let id = req.params.id
+        const { currentPassword } = req.body;
+        const user = await User.findById(id);
+        if(!user) return res.status(404).send({message: 'User not found',  success: false});
+        const isMatch = await checkPassword(user.password, currentPassword);
+        if (!isMatch) return res.status(400).send({message: 'Incorrect current password',  success: false});
 
         let deletedUser = await userModel.findByIdAndDelete({_id: id})
         if(!deletedUser) return res.status(404).send({message: 'User not found, not deleted',  success: false})
