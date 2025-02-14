@@ -57,6 +57,10 @@ api.get('/',
     getAllClient
 )
 
+api.get('/C/',
+    [validateJwt],
+    getAllC
+)
 api.get(
     '/:id',
     [validateJwt],
@@ -73,10 +77,6 @@ api.post(
 )
 
 
-api.get('/C/',
-    [validateJwt],
-    getAllC
-)
 
 api.get('/categorie/:id',
     [validateJwt],
