@@ -1,0 +1,766 @@
+{
+	"info": {
+		"_postman_id": "7ac13300-882f-49a5-9632-1a2a7ffa0d4c",
+		"name": "ProyectoBimestral I",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41477909"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Angel",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Noj",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "anoj1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "anoj1@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ta1CMdan$",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "34567890",
+									"type": "text"
+								},
+								{
+									"key": "profilePictureC",
+									"type": "file",
+									"src": "postman-cloud:///1efec0c6-0aae-4570-a2ab-8e8e3a6f879e"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "anoj1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ta1CMdan$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Pass",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "currentPassword",
+									"value": "ta1CMdan$",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "ta1CMdan@",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client//update-pass/67b0dd12ecfe44c5da153ac0",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"",
+								"update-pass",
+								"67b0dd12ecfe44c5da153ac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Settings",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Luis",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Vasquez",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/updateUserSettings/67b0dd12ecfe44c5da153ac0",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"updateUserSettings",
+								"67b0dd12ecfe44c5da153ac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete My Account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "currentPassword",
+									"value": "ta1CMdan@",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/deleteMyAccount/67b0dd12ecfe44c5da153ac0",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"deleteMyAccount",
+								"67b0dd12ecfe44c5da153ac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/client/test",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Juan",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Ortigoza",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "jortigoza3",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jortigoza3@company.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ta3CMdan@",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "postman-cloud:///1efea921-5197-4750-8a67-484a2ffa0433"
+								},
+								{
+									"key": "phone",
+									"value": "33570024",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "jortigoza2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ta3CMdan@",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Alan",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Lopez",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/updateUser/67b14c3f9e80a5c8fc915a9e",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"updateUser",
+								"67b14c3f9e80a5c8fc915a9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/deleteUser/67b14c3f9e80a5c8fc915a9e",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"deleteUser",
+								"67b14c3f9e80a5c8fc915a9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "jortigoza",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "ta3CMdan@",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/test",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Client getAllClient",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "jortigoza",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "ta3CMdan@",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Client getOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/67b14be49e80a5c8fc915a9a",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"67b14be49e80a5c8fc915a9a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Admin AddCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Cyber",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Tecnologia",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/addC",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"addC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin UpdateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "jugutes solamente",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/updateC/67b0caf5c0722a3d68f47297",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"updateC",
+								"67b0caf5c0722a3d68f47297"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin DeletecCategorie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/deleteC/67b0caf5c0722a3d68f47297",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"deleteC",
+								"67b0caf5c0722a3d68f47297"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin GetAllCategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/C/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"C",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin GetCategorie",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/categorie/67b0dba69a517b4f82127ded",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"categorie",
+								"67b0dba69a517b4f82127ded"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -3,11 +3,10 @@
 import { Router } from 'express'
 import {updateUser, deleteUser, updatePass, registerUser, loginUser, test } from './client.controller.js'
 import { validateJwtClient } from '../../middlewares/validate.jwt.js'
-import {newPasswordValidation} from '../../helpers/validators.js'
-import { uploadProfilePicture } from '../../middlewares/multer.upload.js'
-import { loginValidator, registerValidator } from '../../helpers/validators.js'
+import {newPasswordValidation, registerValidatorC} from '../../helpers/validators.js'
+import {uploadProfilePictureC } from '../../middlewares/multer.upload.js'
+import { loginValidator } from '../../helpers/validators.js'
 import { deleteFileOnError } from '../../middlewares/delete.file.error.js'
-import { existUsername } from '../../helpers/db.validators.js'
 
 const api = Router()
 
@@ -19,8 +18,8 @@ api.get('/test', validateJwtClient, test)
 api.post(
     '/register', 
     [
-        uploadProfilePicture.single('profilePicture'),
-        registerValidator, 
+        uploadProfilePictureC.single('profilePictureC'),
+        registerValidatorC, 
         deleteFileOnError
     ], 
     registerUser

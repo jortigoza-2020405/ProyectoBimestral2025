@@ -2,6 +2,8 @@
 
 import Admin from '../src/admin/admin.model.js'
 import User from '../src/client/client.model.js'
+import Category from '../src/categories/category.model.js'
+
 
 export const existUsername = async(username)=>{
     const alreadyUsername = await Admin.findOne({username})
@@ -10,6 +12,23 @@ export const existUsername = async(username)=>{
         throw new Error(`Username ${username} is already taken`)
     }
 }
+
+export const existUsernameC = async(username)=>{
+    const alreadyUsername = await User.findOne({username})
+    if(alreadyUsername){
+        console.error(`Username ${username} is already taken`)
+        throw new Error(`Username ${username} is already taken`)
+    }
+}
+
+export const existEmailC = async(email)=>{
+    const alreadyEmail = await Admin.findOne({email}) 
+        if(alreadyEmail){
+        console.error(`Email ${email} is already taken`)
+        throw new Error(`Email ${email} is already taken`)
+    }
+}
+
 
 export const existEmail = async(email)=>{
     const alreadyEmail = await Admin.findOne({email}) 
@@ -38,5 +57,13 @@ export const findClient = async(id)=>{
     }catch(err){
         console.error(err)
         return false
+    }
+}
+
+export const existCategoryC = async(name)=>{
+    const alreadyCategory = await Category.findOne({name})
+    if(alreadyCategory){
+        console.error(`Name ${name} is already taken`)
+        throw new Error(`Name ${name} is already taken`)
     }
 }

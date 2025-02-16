@@ -71,8 +71,11 @@ api.get(
 
 api.post(
     '/addC',
-    [validateJwt],
-    [categoryValidator],
+    [
+    validateJwt,
+    categoryValidator
+    ]
+    ,
     addCategory
 )
 
