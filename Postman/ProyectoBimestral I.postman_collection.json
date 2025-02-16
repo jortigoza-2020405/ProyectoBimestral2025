@@ -29,7 +29,7 @@
 								},
 								{
 									"key": "username",
-									"value": "anoj1",
+									"value": "anoj2",
 									"type": "text"
 								},
 								{
@@ -39,7 +39,7 @@
 								},
 								{
 									"key": "password",
-									"value": "ta1CMdan$",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								},
 								{
@@ -92,12 +92,12 @@
 							"urlencoded": [
 								{
 									"key": "userLoggin",
-									"value": "anoj1",
+									"value": "anoj2",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "ta1CMdan$",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								}
 							]
@@ -133,18 +133,18 @@
 							"urlencoded": [
 								{
 									"key": "currentPassword",
-									"value": "ta1CMdan$",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								},
 								{
 									"key": "newPassword",
-									"value": "ta1CMdan@",
+									"value": "1234@MX#ghosG",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/client//update-pass/67b0dd12ecfe44c5da153ac0",
+							"raw": "localhost:5500/v1/client//update-pass/67b151a7e68fe8bd96029a52",
 							"host": [
 								"localhost"
 							],
@@ -154,7 +154,7 @@
 								"client",
 								"",
 								"update-pass",
-								"67b0dd12ecfe44c5da153ac0"
+								"67b151a7e68fe8bd96029a52"
 							]
 						}
 					},
@@ -297,17 +297,17 @@
 								},
 								{
 									"key": "username",
-									"value": "jortigoza3",
+									"value": "jortigoza4",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "jortigoza3@company.com",
+									"value": "jortigoza4@company.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "ta3CMdan@",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								},
 								{
@@ -372,12 +372,12 @@
 							"urlencoded": [
 								{
 									"key": "userLoggin",
-									"value": "jortigoza2",
+									"value": "jortigoza4",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "ta3CMdan@",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								}
 							]
