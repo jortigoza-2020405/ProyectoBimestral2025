@@ -1,7 +1,7 @@
 //Validar campos en las rutas
 import { body } from "express-validator" //Capturar todo el body de la solicitud
 import { validateErrors, validateErrorWithoutImg } from "./validate.error.js"
-import { existUsername, existEmail, existCategoryC, existUsernameC, existEmailC } from "./db.validators.js"
+import { existUsername, existEmail, existCategory, existUsernameC, existEmailC, existProduct } from "./db.validators.js"
 
 export const registerValidator = [
     body('name', 'Name cannot be empty')
@@ -52,10 +52,6 @@ export const registerValidatorC = [
     validateErrors
 ]
 
-
-
-
-
 export const loginValidator = [
     body('userLoggin', 'Username or email cannot be empty')
         .notEmpty()
@@ -76,8 +72,32 @@ export const newPasswordValidation = [
 
 export const categoryValidator = [
     body('name', 'Name cannot be empty')
-        .notEmpty().custom(existCategoryC),
+        .notEmpty().custom(existCategory),
     body('description', 'Description cannot be empty')
         .notEmpty(),
         validateErrorWithoutImg
+]
+
+export const productValidator = [
+    body('productName', 'Product name cannot be empty')
+        .notEmpty().custom(existProduct),
+    body('description', 'Description cannot be empty')
+        .notEmpty(),
+    body('price', 'Price cannot be empty or is not a valid')
+        .notEmpty(),
+    body('stock', 'Stock cannot be empty')
+        .notEmpty(),
+    body('category', 'Category cannot be empty')
+        .notEmpty(),
+    body('brand', 'Brand cannot be empty')
+        .notEmpty(),
+    validateErrors
+]
+
+export const cartValidator = [
+    body('productId', 'Product ID cannot be empty')
+        .notEmpty(),
+    body('quantity', 'Description cannot be empty')
+        .notEmpty(),
+    validateErrorWithoutImg
 ]

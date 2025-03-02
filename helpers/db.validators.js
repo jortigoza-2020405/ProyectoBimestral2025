@@ -2,8 +2,8 @@
 
 import Admin from '../src/admin/admin.model.js'
 import User from '../src/client/client.model.js'
-import Category from '../src/categories/category.model.js'
-
+import Category from '../src/category/category.model.js'
+import Product from '../src/product/product.model.js'
 
 export const existUsername = async(username)=>{
     const alreadyUsername = await Admin.findOne({username})
@@ -60,10 +60,18 @@ export const findClient = async(id)=>{
     }
 }
 
-export const existCategoryC = async(name)=>{
+export const existCategory = async(name)=>{
     const alreadyCategory = await Category.findOne({name})
     if(alreadyCategory){
         console.error(`Name ${name} is already taken`)
         throw new Error(`Name ${name} is already taken`)
+    }
+}
+
+export const existProduct = async(productName)=>{
+    const alreadyProduct = await Product.findOne({productName})
+    if(alreadyProduct){
+        console.error(`Name ${productName} is already taken`)
+        throw new Error(`Name ${productName} is already taken`)
     }
 }

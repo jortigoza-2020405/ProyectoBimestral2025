@@ -51,6 +51,11 @@
 									"key": "profilePictureC",
 									"type": "file",
 									"src": "postman-cloud:///1efec0c6-0aae-4570-a2ab-8e8e3a6f879e"
+								},
+								{
+									"key": "NIT",
+									"value": "12345678",
+									"type": "text"
 								}
 							]
 						},
@@ -97,7 +102,7 @@
 								},
 								{
 									"key": "password",
-									"value": "1234@MX#ghost",
+									"value": "1234@MX#ghosG",
 									"type": "text"
 								}
 							]
@@ -260,6 +265,87 @@
 								"v1",
 								"client",
 								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get top Selling Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/client/getTopSellingProducts/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"getTopSellingProducts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/client/product/mouse",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"product",
+								"mouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products by Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/client/getProductsByCategory/Default",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"getProductsByCategory",
+								"Default"
 							]
 						}
 					},
@@ -617,18 +703,18 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Cyber",
+									"value": "Toys",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Tecnologia",
+									"value": "toys",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/addC",
+							"raw": "localhost:5500/v1/admin/addCategory",
 							"host": [
 								"localhost"
 							],
@@ -636,7 +722,7 @@
 							"path": [
 								"v1",
 								"admin",
-								"addC"
+								"addCategory"
 							]
 						}
 					},
@@ -664,7 +750,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/updateC/67b0caf5c0722a3d68f47297",
+							"raw": "localhost:5500/v1/admin/updateCategory/67c3e460af5c0800e1303581",
 							"host": [
 								"localhost"
 							],
@@ -672,15 +758,15 @@
 							"path": [
 								"v1",
 								"admin",
-								"updateC",
-								"67b0caf5c0722a3d68f47297"
+								"updateCategory",
+								"67c3e460af5c0800e1303581"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Admin DeletecCategorie",
+					"name": "Admin DeleteCategory",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -691,7 +777,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/deleteC/67b0caf5c0722a3d68f47297",
+							"raw": "localhost:5500/v1/admin/deleteCategory/67c3ee48a9993575ef829918",
 							"host": [
 								"localhost"
 							],
@@ -699,8 +785,8 @@
 							"path": [
 								"v1",
 								"admin",
-								"deleteC",
-								"67b0caf5c0722a3d68f47297"
+								"deleteCategory",
+								"67c3ee48a9993575ef829918"
 							]
 						}
 					},
@@ -718,7 +804,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/C/",
+							"raw": "localhost:5500/v1/admin/allCategories/",
 							"host": [
 								"localhost"
 							],
@@ -726,7 +812,7 @@
 							"path": [
 								"v1",
 								"admin",
-								"C",
+								"allCategories",
 								""
 							]
 						}
@@ -734,7 +820,7 @@
 					"response": []
 				},
 				{
-					"name": "Admin GetCategorie",
+					"name": "Admin getCategory",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -745,7 +831,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/categorie/67b0dba69a517b4f82127ded",
+							"raw": "localhost:5500/v1/admin/category/home",
 							"host": [
 								"localhost"
 							],
@@ -753,8 +839,724 @@
 							"path": [
 								"v1",
 								"admin",
-								"categorie",
-								"67b0dba69a517b4f82127ded"
+								"category",
+								"home"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productName",
+									"value": "Mouse 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Mouse para juegos razer viper mini edition 2025",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c3ee48a9993575ef829918",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Razer",
+									"type": "text"
+								},
+								{
+									"key": "offer",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "productPicture",
+									"type": "file",
+									"src": "postman-cloud:///1eff712d-fcf6-4e00-9ddd-1272effc5cb6"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/addProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"addProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/deleteProduct/67c3ea64d2707d77e1a91525",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"deleteProduct",
+								"67c3ea64d2707d77e1a91525"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productName",
+									"value": "Razer Mini v8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/updateProduct/67c3cf2afd3cad04b599b9fc",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"updateProduct",
+								"67c3cf2afd3cad04b599b9fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productName",
+									"value": "Mouse Razer Viper Mini",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Mouse para juegos razer viper mini edition 2025",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67b0dba69a517b4f82127ded",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Razer",
+									"type": "text"
+								},
+								{
+									"key": "offer",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "productPicture",
+									"type": "file",
+									"src": "postman-cloud:///1eff712d-fcf6-4e00-9ddd-1272effc5cb6"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/allProducts/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"allProducts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventary Control",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/getInventaryControl/67c4b4ac1db80d6bc850e701",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"getInventaryControl",
+								"67c4b4ac1db80d6bc850e701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Out of Stock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/getOutOfStockProducts/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"getOutOfStockProducts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top Selling Products (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/getTopSellingProducts/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"getTopSellingProducts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productName",
+									"value": "Mouse Razer Viper Mini",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Mouse para juegos razer viper mini edition 2025",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67b0dba69a517b4f82127ded",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Razer",
+									"type": "text"
+								},
+								{
+									"key": "offer",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "productPicture",
+									"type": "file",
+									"src": "postman-cloud:///1eff712d-fcf6-4e00-9ddd-1272effc5cb6"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/product/Mouse",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"product",
+								"Mouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Discount Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "discount",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "offerExpiryDate",
+									"value": "2025-04-01T00:00:00Z",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/addProductOffer/67c3cf2afd3cad04b599b9fc",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"addProductOffer",
+								"67c3cf2afd3cad04b599b9fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Update Cart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productId",
+									"value": "67c4c3cf872fd80025b57dcd",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/updateCart/67c4b4771db80d6bc850e6f8",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"updateCart",
+								"67c4b4771db80d6bc850e6f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productId",
+									"value": "67c4c3cf872fd80025b57dcd",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/addToCart/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"addToCart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cart Items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/getCartItems/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"getCartItems",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/deleteCartProduct/67c4c3cf872fd80025b57dcd",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"deleteCartProduct",
+								"67c4c3cf872fd80025b57dcd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Purchase",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "paymentMethod",
+									"value": "Credit Card",
+									"type": "text"
+								},
+								{
+									"key": "shippingAddress",
+									"value": "Zona Guatemala, Guatemala",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/client/completePurchase/67c4b4771db80d6bc850e6f8",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"completePurchase",
+								"67c4b4771db80d6bc850e6f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/client/getPurchaseHistory/",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"getPurchaseHistory",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Edit Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"67c4c3cf872fd80025b57dcd\",\r\n      \"quantity\": 0,\r\n      \"price\": 0\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5500/v1/admin/editInvoice/67c4d4018ef970b6d49617d3",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"editInvoice",
+								"67c4d4018ef970b6d49617d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/v1/admin/getUserInvoices/67b151a7e68fe8bd96029a52",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"admin",
+								"getUserInvoices",
+								"67b151a7e68fe8bd96029a52"
 							]
 						}
 					},

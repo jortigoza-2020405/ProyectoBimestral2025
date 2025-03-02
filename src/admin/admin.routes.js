@@ -10,11 +10,12 @@ import {
     updateUser
  } from './admin.controller.js'
 import { validateJwt } from '../../middlewares/validate.jwt.js'
-import { categoryValidator, loginValidator, registerValidator } from '../../helpers/validators.js'
-import { uploadProfilePicture } from '../../middlewares/multer.upload.js'
+import { categoryValidator, loginValidator, productValidator, registerValidator } from '../../helpers/validators.js'
+import { uploadProfilePicture, uploadProductPicture } from '../../middlewares/multer.upload.js'
 import { deleteFileOnError } from '../../middlewares/delete.file.error.js'
-import { addCategory, deleteCategory, getAllC, getCategory, updateCategory } from '../categories/category.controller.js'
-// import { addProduct } from '../product/product.controller.js'
+import { addCategory, deleteCategory, getAllCategories, getCategory, updateCategory } from '../category/category.controller.js'
+import { addProduct, applyOfferToProduct, deleteProduct, getAllProducts, getInventoryControl, getOutOfStockProducts, getProduct, getTopSellingProducts, updateProduct } from '../product/product.controller.js'
+import { editInvoice, getUserInvoices } from '../purchase/purchase.controller.js'
 const api = Router()
 
 //Rutas privadas
@@ -30,6 +31,20 @@ api.post(
     ], 
     registerAdmin
 )
+
+// Productos (Administrador)
+api.post(
+    '/addProduct',
+    [
+    validateJwt,
+    uploadProductPicture.single('productPicture'),
+    productValidator,
+    deleteFileOnError
+    ],
+    addProduct
+)
+
+
 
 
 api.post(
@@ -52,15 +67,36 @@ api.delete(
     deleteUser
 )
 
-api.get('/',
+// Obtener todos 
+
+api.get('/allClients/',
     [validateJwt],
     getAllClient
 )
 
-api.get('/C/',
+api.get('/allCategories/',
     [validateJwt],
-    getAllC
+    getAllCategories
 )
+
+api.get('/allProducts/',
+    [validateJwt],
+    getAllProducts
+)
+
+api.get(
+    '/getOutOfStockProducts/',
+    [validateJwt],
+    getOutOfStockProducts
+)
+
+api.get(
+    '/getTopSellingProducts/',
+    [validateJwt],
+    getTopSellingProducts
+)
+
+
 api.get(
     '/:id',
     [validateJwt],
@@ -70,7 +106,7 @@ api.get(
 // Categorias (Administrador)
 
 api.post(
-    '/addC',
+    '/addCategory',
     [
     validateJwt,
     categoryValidator
@@ -79,24 +115,71 @@ api.post(
     addCategory
 )
 
+// Busquedas por nombre categorias y productos
 
-
-api.get('/categorie/:id',
+api.get('/category/:name',
     [validateJwt],
     getCategory
 )
 
+api.get('/product/:name', 
+    [validateJwt], 
+    getProduct
+)
+
+
+
 api.put(
-    '/updateC/:id',
+    '/updateCategory/:id',
     [validateJwt],
     updateCategory
 )
 
 api.delete(
-    '/deleteC/:id',
+    '/deleteCategory/:id',
     [validateJwt],
     deleteCategory
 )
+
+// Productos (Administrador)
+
+api.put(
+    '/addProductOffer/:id',
+    [validateJwt],
+    applyOfferToProduct
+)
+
+api.put(
+    '/updateProduct/:id',
+    [validateJwt],
+    updateProduct
+)
+
+api.get(
+    '/getInventaryControl/:id',
+    [validateJwt],
+    getInventoryControl
+)
+
+api.delete(
+    '/deleteProduct/:id',
+    [validateJwt],
+    deleteProduct
+)
+
+// Funciones de factura (Administrador)
+api.put(
+    '/editInvoice/:orderId',
+    [validateJwt],
+    editInvoice
+)
+
+api.get(
+    '/getUserInvoices/:userId',
+    [validateJwt],
+    getUserInvoices
+)
+
 
 
 export default api

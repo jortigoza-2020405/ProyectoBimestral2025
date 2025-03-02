@@ -68,3 +68,33 @@ const multerConfigC = (destinationPath)=>{
 }
 
 export const uploadProfilePictureC = multerConfigC('../uploads/img/client')
+
+const multerConfigP = (destinationPath)=>{
+    return multer(
+        {
+            storage: multer.diskStorage( //En donde se va a almacenar
+                {
+                    destination: (req, file, cb)=>{ //Donde guardar
+                        const fullPath = join(CURRENT_DIR, destinationPath)
+                        req.filePath = fullPath
+                        cb(null, fullPath)
+                    },
+                    filename: (req, file, cb)=>{ //Con que nombre
+                        const fileExtension = extname(file.originalname) //extraer la extensión de archivos
+                        const fileName = file.originalname.split(fileExtension)[0]
+                        cb(null, `${fileName}-${Date.now()}${fileExtension}`)
+                    }
+                }
+            ),
+            fileFilter: (req, file, cb)=>{ //Validar el tipo de archivo aceptado
+                if(MIMETYPES.includes(file.mimetype)) cb(null, true)
+                else cb(new Error(`Only ${MIMETYPES.join(' ')} are allowed`))
+            },
+            limits: { //Tamaño máximo de archivos
+                fileSize: MAX_SIZE
+            }
+        }
+    )
+}
+
+export const uploadProductPicture = multerConfigP('../uploads/img/admin/products')
