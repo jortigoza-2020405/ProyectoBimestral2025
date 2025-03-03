@@ -19,22 +19,22 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Angel",
+									"value": "Juan",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Noj",
+									"value": "Ortigoza",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "anoj2",
+									"value": "jortigoza2",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "anoj1@example.com",
+									"value": "jortigoza@example.com",
 									"type": "text"
 								},
 								{
@@ -97,12 +97,12 @@
 							"urlencoded": [
 								{
 									"key": "userLoggin",
-									"value": "anoj2",
+									"value": "jortigoza2",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "1234@MX#ghosG",
+									"value": "1234@MX#ghost",
 									"type": "text"
 								}
 							]
@@ -149,7 +149,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/client//update-pass/67b151a7e68fe8bd96029a52",
+							"raw": "localhost:5500/v1/client//update-pass/67c5b2b26cc961751803aadd",
 							"host": [
 								"localhost"
 							],
@@ -159,7 +159,7 @@
 								"client",
 								"",
 								"update-pass",
-								"67b151a7e68fe8bd96029a52"
+								"67c5b2b26cc961751803aadd"
 							]
 						}
 					},
@@ -223,13 +223,13 @@
 							"urlencoded": [
 								{
 									"key": "currentPassword",
-									"value": "ta1CMdan@",
+									"value": "1234@MX#ghosG",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/client/deleteMyAccount/67b0dd12ecfe44c5da153ac0",
+							"raw": "localhost:5500/v1/client/deleteMyAccount/67c5b2b26cc961751803aadd",
 							"host": [
 								"localhost"
 							],
@@ -238,7 +238,7 @@
 								"v1",
 								"client",
 								"deleteMyAccount",
-								"67b0dd12ecfe44c5da153ac0"
+								"67c5b2b26cc961751803aadd"
 							]
 						}
 					},
@@ -383,12 +383,12 @@
 								},
 								{
 									"key": "username",
-									"value": "jortigoza4",
+									"value": "jortigoza1",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "jortigoza4@company.com",
+									"value": "jortigoza1@company.com",
 									"type": "text"
 								},
 								{
@@ -458,7 +458,7 @@
 							"urlencoded": [
 								{
 									"key": "userLoggin",
-									"value": "jortigoza4",
+									"value": "jortigoza1",
 									"type": "text"
 								},
 								{
@@ -515,7 +515,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/updateUser/67b14c3f9e80a5c8fc915a9e",
+							"raw": "localhost:5500/v1/admin/updateUser/67c5b34b6cc961751803aaf1",
 							"host": [
 								"localhost"
 							],
@@ -524,7 +524,7 @@
 								"v1",
 								"admin",
 								"updateUser",
-								"67b14c3f9e80a5c8fc915a9e"
+								"67c5b34b6cc961751803aaf1"
 							]
 						}
 					},
@@ -542,7 +542,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/deleteUser/67b14c3f9e80a5c8fc915a9e",
+							"raw": "localhost:5500/v1/admin/deleteUser/67c5b34b6cc961751803aaf1",
 							"host": [
 								"localhost"
 							],
@@ -551,7 +551,7 @@
 								"v1",
 								"admin",
 								"deleteUser",
-								"67b14c3f9e80a5c8fc915a9e"
+								"67c5b34b6cc961751803aaf1"
 							]
 						}
 					},
@@ -619,23 +619,10 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "userLoggin",
-									"value": "jortigoza",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "ta3CMdan@",
-									"type": "text",
-									"disabled": true
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/",
+							"raw": "localhost:5500/v1/admin/allClients/",
 							"host": [
 								"localhost"
 							],
@@ -643,6 +630,7 @@
 							"path": [
 								"v1",
 								"admin",
+								"allClients",
 								""
 							]
 						}
@@ -651,9 +639,6 @@
 				},
 				{
 					"name": "Admin Client getOne",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -663,12 +648,8 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
-						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/67b14be49e80a5c8fc915a9a",
+							"raw": "localhost:5500/v1/admin/getOne/67c5b3de6cc961751803ab02",
 							"host": [
 								"localhost"
 							],
@@ -676,7 +657,8 @@
 							"path": [
 								"v1",
 								"admin",
-								"67b14be49e80a5c8fc915a9a"
+								"getOne",
+								"67c5b3de6cc961751803ab02"
 							]
 						}
 					},
@@ -703,12 +685,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Toys",
+									"value": "Gaming",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "toys",
+									"value": "Tecnologia para Juegos",
 									"type": "text"
 								}
 							]
@@ -744,13 +726,13 @@
 							"urlencoded": [
 								{
 									"key": "description",
-									"value": "jugutes solamente",
+									"value": "Tecnologia",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/updateCategory/67c3e460af5c0800e1303581",
+							"raw": "localhost:5500/v1/admin/updateCategory/67c5b4fbdc758aa589460d01",
 							"host": [
 								"localhost"
 							],
@@ -759,7 +741,7 @@
 								"v1",
 								"admin",
 								"updateCategory",
-								"67c3e460af5c0800e1303581"
+								"67c5b4fbdc758aa589460d01"
 							]
 						}
 					},
@@ -777,7 +759,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/deleteCategory/67c3ee48a9993575ef829918",
+							"raw": "localhost:5500/v1/admin/deleteCategory/67c5b4fbdc758aa589460d01",
 							"host": [
 								"localhost"
 							],
@@ -786,7 +768,7 @@
 								"v1",
 								"admin",
 								"deleteCategory",
-								"67c3ee48a9993575ef829918"
+								"67c5b4fbdc758aa589460d01"
 							]
 						}
 					},
@@ -831,7 +813,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/category/home",
+							"raw": "localhost:5500/v1/admin/category/gaming",
 							"host": [
 								"localhost"
 							],
@@ -840,7 +822,7 @@
 								"v1",
 								"admin",
 								"category",
-								"home"
+								"gaming"
 							]
 						}
 					},
@@ -867,17 +849,17 @@
 							"formdata": [
 								{
 									"key": "productName",
-									"value": "Mouse 1",
+									"value": "MSI gaming monitor 240HZ",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Mouse para juegos razer viper mini edition 2025",
+									"value": "Monitor para juegos marca MSI tasa de refresco 240HZ",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "99.99",
+									"value": "120",
 									"type": "text"
 								},
 								{
@@ -887,7 +869,7 @@
 								},
 								{
 									"key": "category",
-									"value": "67c3ee48a9993575ef829918",
+									"value": "67c5b555dc758aa589460d0f",
 									"type": "text"
 								},
 								{
@@ -934,7 +916,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5500/v1/admin/deleteProduct/67c3ea64d2707d77e1a91525",
+							"raw": "localhost:5500/v1/admin/deleteProduct/67c5b5d4dc758aa589460d1a",
 							"host": [
 								"localhost"
 							],
@@ -943,7 +925,7 @@
 								"v1",
 								"admin",
 								"deleteProduct",
-								"67c3ea64d2707d77e1a91525"
+								"67c5b5d4dc758aa589460d1a"
 							]
 						}
 					},
@@ -965,13 +947,13 @@
 							"urlencoded": [
 								{
 									"key": "productName",
-									"value": "Razer Mini v8",
+									"value": "Teclado EVA edition",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/updateProduct/67c3cf2afd3cad04b599b9fc",
+							"raw": "localhost:5500/v1/admin/updateProduct/67c5b5d4dc758aa589460d1a",
 							"host": [
 								"localhost"
 							],
@@ -980,7 +962,7 @@
 								"v1",
 								"admin",
 								"updateProduct",
-								"67c3cf2afd3cad04b599b9fc"
+								"67c5b5d4dc758aa589460d1a"
 							]
 						}
 					},
@@ -1080,7 +1062,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:5500/v1/admin/getInventaryControl/67c4b4ac1db80d6bc850e701",
+							"raw": "localhost:5500/v1/admin/getInventaryControl/",
 							"host": [
 								"localhost"
 							],
@@ -1089,7 +1071,7 @@
 								"v1",
 								"admin",
 								"getInventaryControl",
-								"67c4b4ac1db80d6bc850e701"
+								""
 							]
 						}
 					},
@@ -1329,7 +1311,7 @@
 							"urlencoded": [
 								{
 									"key": "productId",
-									"value": "67c4c3cf872fd80025b57dcd",
+									"value": "67c5b578dc758aa589460d13",
 									"type": "text"
 								},
 								{
@@ -1405,7 +1387,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:5500/v1/client/deleteCartProduct/67c4c3cf872fd80025b57dcd",
+							"raw": "localhost:5500/v1/client/deleteCartProduct/67c5b578dc758aa589460d13",
 							"host": [
 								"localhost"
 							],
@@ -1414,7 +1396,7 @@
 								"v1",
 								"client",
 								"deleteCartProduct",
-								"67c4c3cf872fd80025b57dcd"
+								"67c5b578dc758aa589460d13"
 							]
 						}
 					},
@@ -1448,11 +1430,16 @@
 									"key": "shippingAddress",
 									"value": "Zona Guatemala, Guatemala",
 									"type": "text"
+								},
+								{
+									"key": "NIT",
+									"value": "12345678",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:5500/v1/client/completePurchase/67c4b4771db80d6bc850e6f8",
+							"raw": "localhost:5500/v1/client/completePurchase/67c5b73ff767b7b6caf27351",
 							"host": [
 								"localhost"
 							],
@@ -1461,7 +1448,7 @@
 								"v1",
 								"client",
 								"completePurchase",
-								"67c4b4771db80d6bc850e6f8"
+								"67c5b73ff767b7b6caf27351"
 							]
 						}
 					},

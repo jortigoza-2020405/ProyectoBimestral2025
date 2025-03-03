@@ -185,31 +185,17 @@ export const getInventoryControl = async (req, res) => {
 
   export const getTopSellingProducts = async (req, res) => {
     try {
-     
-      const topSellingProducts = await Product.find()
-        .sort({ salesCount: -1 })  
-        .limit(10);  
+      // Obtener los productos ordenados por el salesCount (de mayor a menor)
+      const topProducts = await Product.find()
+        .sort({ salesCount: -1 })  // Ordena de mayor a menor ventas
+        .limit(10);  // Limitar a los 10 productos más vendidos (puedes ajustar el límite)
   
-      if (topSellingProducts.length === 0) {
-        return res.status(404).send({
-          message: 'No top-selling products found',
-          success: false
-        });
-      }
-  
-      return res.send({
-        success: true,
-        message: 'Top-selling products found',
-        topSellingProducts
+      res.status(200).json({
+        message: "Top selling products retrieved successfully",
+        products: topProducts
       });
-  
     } catch (error) {
-      console.error('Error fetching top-selling products:', error);
-      return res.status(500).send({
-        message: 'Error fetching top-selling products',
-        error,
-        success: false
-      });
+      res.status(500).json({ message: "Error fetching top selling products", error: error.message });
     }
   };
 

@@ -56,47 +56,56 @@ export const addToCart = async (req, res) => {
 
 // Eliminar producto del carrito
 export const removeFromCart = async (req, res) => {
-        try {
-          const productId = req.params.productId;
-          
-         
-          if (!mongoose.Types.ObjectId.isValid(productId)) {
-            return res.status(400).send({ message: 'Invalid product ID format', success: false });
-          }
-      
-          
-          const cart = await Cart.findOne({ userId: req.userId }); 
-          if (!cart) {
-            return res.status(404).send({ message: 'Cart not found', success: false });
-          }
-      
-          
-          const productIndex = cart.items.findIndex(item => item.productId.toString() === productId);
-      
-          if (productIndex === -1) {
-            return res.status(404).send({ message: 'Product not found in cart', success: false });
-          }
-      
-         
-          cart.items.splice(productIndex, 1);
-          await cart.save();
-      
-          
-          return res.send({
-            success: true,
-            message: 'Product removed from cart successfully',
-            updatedCart: cart 
-          });
-      
-        } catch (error) {
-          console.error('Error deleting product from cart:', error);
-          return res.status(500).send({
-            message: 'Error deleting product from cart',
-            error,
-            success: false
-          });
-        }
-      };
+  try {
+    const productId = req.params.productId;
+
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).send({ message: 'Invalid product ID format', success: false });
+    }
+
+    const cart = await Cart.findOne({ userId: req.userId });
+    if (!cart) {
+      return res.status(404).send({ message: 'Cart not found', success: false });
+    }
+
+    const productIndex = cart.items.findIndex(item => item.productId.toString() === productId);
+
+    if (productIndex === -1) {
+      return res.status(404).send({ message: 'Product not found in cart', success: false });
+    }
+
+    const productInCart = cart.items[productIndex];
+    const product = await Product.findById(productInCart.productId); 
+
+    if (!product) {
+      return res.status(404).send({ message: 'Product not found in the database', success: false });
+    }
+
+    
+    product.stock += productInCart.quantity; 
+    
+    await product.save();
+
+    
+    cart.items.splice(productIndex, 1);
+    await cart.save();
+
+    return res.send({
+      success: true,
+      message: 'Product removed from cart and stock updated successfully',
+      updatedCart: cart
+    });
+
+  } catch (error) {
+    console.error('Error deleting product from cart:', error);
+    return res.status(500).send({
+      message: 'Error deleting product from cart',
+      error,
+      success: false
+    });
+  }
+};
+
 
 //Actualizar el carrito
 export const updateCart = async (req, res) => {

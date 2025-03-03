@@ -6,20 +6,18 @@ import Product from "../product/product.model.js";
 //Proceso de compras (Cliente)
 export const completePurchase = async (req, res) => {
   try {
-    const { paymentMethod, shippingAddress } = req.body; 
-
-    if (!paymentMethod || !shippingAddress) {
+    const { paymentMethod, shippingAddress, NIT } = req.body;
+  
+    if (!paymentMethod || !shippingAddress || !NIT ) {
       return res.status(400).send({ message: "Payment method and shipping address are required", success: false });
     }
-
-    
+  
     const cart = await Cart.findById(req.params.cartId); 
-
+  
     if (!cart || cart.items.length === 0) {
       return res.status(400).send({ message: "Cart is empty", success: false });
     }
-
-
+  
     let total = 0;
     const productsDetails = [];  
     for (let item of cart.items) {
@@ -27,46 +25,44 @@ export const completePurchase = async (req, res) => {
       if (!product) {
         return res.status(404).send({ message: "Product not found", success: false });
       }
-
-
+  
       if (product.stock < item.quantity) {
         return res.status(400).send({ message: `Not enough stock for ${product.productName}`, success: false });
       }
-
-    
+  
       const productTotal = product.price * item.quantity;
       total += productTotal;
-
+  
       productsDetails.push({
         productName: product.productName,
         quantity: item.quantity,
         price: product.price,
         productTotal,
       });
-
-      
+  
+      // Disminuir el stock del producto
       product.stock -= item.quantity;
-      await product.save();
+      // Actualizar el salesCount de los productos comprados
+      product.salesCount += item.quantity;
+      await product.save(); // Guardar el producto con la nueva cantidad de ventas
     }
-
-    
+  
     const taxPercentage = 12;
-
-    
+  
     const order = new Order({
       cartId: cart._id,
       total: total,
       paymentMethod,
       shippingAddress,
+      NIT
     });
-
-    
+  
     await order.save();
-
-    
+  
+    // Vaciar el carrito después de la compra
     cart.items = [];
     await cart.save();
-
+  
     return res.send({
       success: true,
       message: "Purchase completed successfully",
@@ -83,8 +79,7 @@ export const completePurchase = async (req, res) => {
       success: false,
     });
   }
-};
-
+}  
 
 // Historial de compras (Cliente)
 

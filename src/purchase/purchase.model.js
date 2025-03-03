@@ -45,6 +45,10 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
+      NIT:{
+      type: String,
+      required: true,
+    },
     orderDate: {
       type: Date,
       default: Date.now,

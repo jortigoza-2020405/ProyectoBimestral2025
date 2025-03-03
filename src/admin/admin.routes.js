@@ -98,7 +98,7 @@ api.get(
 
 
 api.get(
-    '/:id',
+    '/getOne/:id',
     [validateJwt],
     getClient
 )
@@ -156,7 +156,7 @@ api.put(
 )
 
 api.get(
-    '/getInventaryControl/:id',
+    '/getInventaryControl/',
     [validateJwt],
     getInventoryControl
 )
